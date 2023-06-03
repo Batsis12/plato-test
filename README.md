@@ -1,6 +1,6 @@
 ## Test Project for Plato Creative
 
-This is an application finds the records from a remote API and lists the products in a CSS grid. The application also allows to search for a particular product.
+This application fetches movies from TMDB API and lists them in a grid. The application also allows to search for a particular movie.
 
 ## To Install
 * clone the repo
