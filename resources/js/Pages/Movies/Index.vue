@@ -45,7 +45,7 @@ watch(search, (value) => {
             <div v-else-if="movies.length" v-for="movie in movies" :key="movie">
                 <div class="rounded-lg bg-white shadow-lg">
                     <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/w342/' +  movie.poster_path"  alt="{{ movie.title}}" class="object-cover rounded-t-lg" />
-                    <img v-else src="https://dummyimage.com/300"  alt="{{ movie.title}}" class="object-cover rounded-t-lg" />
+                    <img v-else src="https://placeholder.pics/svg/342x512/A3A3A3-999999/141512-9C9C9C/No%20Image"  alt="{{ movie.title}}" class="object-cover rounded-t-lg" />
                     <div class="p-4">
                         <h2 class="mb-2 text-xs font-semibold">{{ movie.title }}</h2>
                         <p class="mb-2 text-xs text-gray-700">Release Date: {{ moment(movie.release_date).format('MMMM D, Y') }}</p>
