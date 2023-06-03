@@ -3,33 +3,33 @@ import { ref } from "vue";
 import { watch } from "vue";
 import { router } from '@inertiajs/vue3'
 import moment from 'moment';
-
+import debounce from 'lodash/debounce';
 const props = defineProps(['movies']);
 let input = ref("");
 let search = ref('');
 
-watch(search, (value) => {
+watch(search, debounce( function (value) {
     router.get(
         "/search_movie",
         { search: value },
         {
             preserveState: true,
-        }
-    );
-});
+        })
+}, 300 ));
+
 </script>
 
 <template>
+    <Head title="Movie Listing" />
     <div class="container mx-auto grid flex border bg-gray-100 rounded-md my-10">
-        <div class="gap-x-6 gap-y-12 font-weight-bolder py-0 px-10 flex justify-center">
-            <div>
-                <h1 class="font-extrabold w-100">
-                    Salman's Practical Test
+
+        <div class="grid justify-center">
+            <div class="justify-center mt-5 mb-2">
+                <h1 class="font-extrabold w-100 text-center">
+                Salman's Practical Test
                 </h1>
             </div>
-        </div>
-        <div class="gap-x-6 gap-y-10 py-2 px-10 flex justify-center">
-            <div>
+            <div class="justify-center">
                 <input
                     type="text"
                     v-model="search"
@@ -38,6 +38,7 @@ watch(search, (value) => {
                 />
             </div>
         </div>
+
         <div class="py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 px-10">
             <div class="item error" v-if="search&&!movies.length">
                 <p>No results found!</p>
